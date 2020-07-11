@@ -2,17 +2,45 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Vanya BK</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
+      <h1>Vanya BK</h1>
+      <p>I am an undergrad at IIT,Madras. I am passionate about coding and making the world a easier place to live in by developing new products. My hobbies include watching sitcoms and playing table tennis.</p>
+      <p>I started coding since 8th grade when I was taught Java as a part of the ICSE curriculum. Then I learnt C++ in my 11th and 12th. Later when I joined IIT Madras and started getting involved in projects and saw the end results which made lives of so many easier is when I decided I should be doing this for the rest of my life.</p>
+      <h2>Here are some of the projects I have completed</h2>
+      <h4>ECONF.AI -  Helps organize conferences optimally</h4> <img src="Images/econf.jpeg"/>
+      <p>I built a recommender system to suggest conferences to users based on the description of the previously attended conferences and the location of the user. I implemented the TF-IDF algorithm to allocate weights to the words and then modeled them in a 2D vector space to ﬁnd similar words in the description of the conferences using cosine similarity.</p>
+      <p>Here's the <a href="https://gitlab.com/aishagarwal/wintathon2020_stardust">link</a> to the complete project</p>
+      <h4>Bloom Trees</h4>
+      <p>I improved the time taken for the implementation of the Bloom tree by 20 percent(a memory efﬁcient data structure which uses bloom ﬁlters to store the graphs) by implementing the common ancestor method which keeps track of the level numbers to ﬁnd the path between two leaves rather than ﬁnding the path between the root and the two leaves and then merging them(done originally).</p>
+      <h4>Reinforcement Learning Project</h4><img src="Images/dqn.png"/>
+      <p>I implemented <b>Deep-Q networks</b> from scratch using tensorflow for the game breakout</p> 
+      <p>Here's the <a href="https://github.com/VanyaBK/DQN-Breakout">link</a> to the complete project</p>
+      <h4>Reinforcement Learning Internship</h4><img src="Images/quad-rotor.jpg"/>
+      <p>I studied various state-of-the-art research papers on how to control the quad-rotor using reinforcement learning and implemented various reinforcement learning algorithms like Actor Critic methods using natural gradient descent and Proximal Policy methods for various gym environments with discrete action space like CartPole and continuous action space like LunarLanderContinuous which is very similar to the quad-rotor’s environment, and compared their performances.</p>
+      <p>Here's the <a href="https://gitlab.com/shreyaschaudhari/quad_control">link</a> to the complete project</p>
+      <h4>Internship at Microsoft</h4><img src="Images/ms.png"/>
+      <p>I worked on keyphrase extraction for employee offers by testing several unsupervised techniques like TextRank method, MultipartiteRank method and customizing them for extraction from webpages. I achieved an improvement of about 17% in precision</p>
+      <h2>Links to my social media profiles</h2>
+      <a href="https://github.com/VanyaBK">Github</a>
+      <a href="https://www.linkedin.com/in/vanyabk/">LinkedIN</a>
+      <a href="https://gitlab.com/vanya999">Gitlab</a>
+      <h2>My Hobbies!!</h2>
+      <pre>
+      <h4>I love to play cricket and table tennis</h4>
+      <img src="Images/cricket.jpg"/>
+      <img src="Images/tt.jpg"/>
+
+      <h4>Other than that I love watching F.R.I.E.N.D.S for the gazzilionth time😋</h4>
+      <img src="Images/friends.jpg"/>
+      </pre>
+      <button onclick="addRandomGreeting()">Friends' dialogues</button>
       <div id="greeting-container"></div>
+      
     </div>
   </body>
 </html>

@@ -15,14 +15,14 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const greetings =
-      ['How you doin?', 'Joey doesnt share food!', 'I know!!!!', 'We were on a breeaaak'];
+function addRandomDialogues() {
+  const dialogues =
+      ['How you doin?😏', 'Joey doesnt share food!🍕', 'I know!!!!😤', 'We were on a breeaaak😱'];
 
   // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  const dialogue = dialogues[Math.floor(Math.random() * dialogues.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const dialogueContainer = document.getElementById('dialogue-container');
+  dialogueContainer.innerText = dialogue;
 }

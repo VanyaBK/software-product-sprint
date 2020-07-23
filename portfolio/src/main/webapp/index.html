@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body style="background-color:powderblue;">
+  <body style="background-color:powderblue;" onload="getServerGreetings()">
     <div id="content">
       <h1>Vanya BK</h1>
       <h2>Welcome to my world of coding, table tennis and travelling!😁</h2>
@@ -45,6 +45,19 @@
       </pre>
       <h4>Besides this I love travelling to enjoy the nature's serene beauty and hit the refresh button once in a while🤗</h4>
       <p>Click <a href="images.html">here</a> to see some of the pics I clicked on my recent journey to Chikmagalur and Jog Falls!!</p>
+      <p>Click here to see a greeting:</p>
+      <button onclick="getRandomGreetingUsingAsyncAwait()">Greetings!</button>
+      <div id="greeting-container"></div>
+      <button onclick="getServergreetings()">Fetch server stats!</button>
+      <ul id="greetings-container"></ul>
+      <form action="/data" method="POST">
+
+      <p>Subtract:</p>
+      <input type="text" name="comment" value="Delete and add comment here">
+      <br/><br/>
+
+      <input type="submit" />
+    </form>
     </div>
   </body>
 </html>

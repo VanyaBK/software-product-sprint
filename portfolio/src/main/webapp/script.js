@@ -26,3 +26,31 @@ function addRandomDialogues() {
   const dialogueContainer = document.getElementById('dialogue-container');
   dialogueContainer.innerText = dialogue;
 }
+async function getRandomGreetingUsingAsyncAwait() {
+  const response = await fetch('/data');
+  const greeting = await response.text();
+  document.getElementById('greeting-container').innerText = greeting;
+}
+
+function getServergreetings() {
+  fetch('/data').then(response => response.json()).then((greeting) => {
+    // stats is an object, not a string, so we have to
+    // reference its fields to create HTML content
+
+    const statsListElement = document.getElementById('greetings-container');
+    statsListElement.innerHTML = '';
+    for(var i=0;i<greeting.length;i++)
+    {
+        statsListElement.appendChild(
+            createListElement('Greetings: ' + greeting + '\n'));
+    }
+  });
+  return statsListElement.innerText;
+}
+
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
+}
+

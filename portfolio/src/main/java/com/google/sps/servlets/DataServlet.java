@@ -13,20 +13,72 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
-
+import com.google.gson.Gson;
 import java.io.IOException;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-
+    public class Tasks{
+    long ID;
+    String COMMENT;
+}
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    /* //Hard-coded comments
     response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello world!</h1>");
+    response.getWriter().println("<h1>Hello Vanya!</h1>");
+    ArrayList<String> greetings = new ArrayList<String>();
+    greetings.add("Hello");
+    greetings.add("Hola");
+    greetings.add("Namaskara");
+    Gson gson = new Gson();
+    String json = gson.toJson(greetings);
+    response.getWriter().println(json);*/
+    //Adding comments using data store
+    Query query = new Query("Task").addSort("comment", SortDirection.DESCENDING);
+
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+
+    List<Tasks> tasks = new ArrayList<>();
+    for (Entity entity : results.asIterable()) {
+      long id = entity.getKey().getId();
+      String comment = (String) entity.getProperty("comment");
+
+      Tasks task = new Tasks();
+      task.ID = id;
+      task.COMMENT = comment;
+      tasks.add(task);
+    }
+
+    Gson gson = new Gson();
+
+    response.setContentType("application/json;");
+    response.getWriter().println(gson.toJson(tasks));
   }
+    @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String comment = request.getParameter("comment");
+    Entity taskEntity = new Entity("Task");
+    taskEntity.setProperty("comment", comment);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(taskEntity);
+    // Redirect back to the HTML page.
+    response.sendRedirect("/index.html");
+  }
+
 }

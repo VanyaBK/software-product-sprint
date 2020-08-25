@@ -1,1 +1,1 @@
-This repo contains Vanya's portfolio and SPS projects.
+This repo contains Vanya's portfolio and comment feature.
